@@ -4,5 +4,5 @@ class User < ApplicationRecord
   #devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
   devise :database_authenticatable, :registerable, :rememberable, :validatable
   has_many :posts
-  validates :text, presence: true, length: { minimum: 140 }
+  has_many :followers
 end

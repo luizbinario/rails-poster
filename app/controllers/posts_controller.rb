@@ -3,10 +3,15 @@ class PostsController < ApplicationController
 	def index
 		@user = User.find(params[:user_id])
 		@posts = Post.order(created_at: :desc)
+
+		@follows = Follower.where(follows_user: @user.id, notified: false).count
+		
+		render :layout => "profile"
 	end
 	
 	def show
 		@post = Post.find(params[:id])
+		render :layout => "profile"
     end
 
     def new

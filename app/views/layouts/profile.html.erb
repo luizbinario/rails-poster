@@ -27,6 +27,28 @@
             <li class="list-group-item"><b>Email:</b> <%= @user.email %></li>
             <li class="list-group-item"><b>Cadastro realizado em:</b> <%= @user.created_at.strftime('%d/%m/%Y') %></li>
           </ul>
+          <br>
+          <% if current_user.id != @user.id %>
+            <% if @follow %>
+              <ul class="list-group">
+                    <button disabled="true" class="btn btn-secondary">Seguindo @<%= @user.name %></button>
+              </ul>
+            <% else %>
+              <ul class="list-group">
+                  <%= form_with(model: [@user, @user.followers.build], local: true) do |form| %>
+                    <%= form.hidden_field :follows_user, value: @user.id %>
+                    <%= form.submit "Seguir @"+@user.name, :class => "btn btn-primary btn-block" %>
+                  <% end %>
+              </ul>
+            <% end %>
+          <% else %>
+            <% if controller_name != "notifications" %>
+              <%= link_to user_notifications_path(current_user), class: "btn btn-primary btn-block" do %>
+                <b>Notificações</b> <span class="badge badge-light"><%= @follows %></span>
+              <% end %>
+            <% end %>
+          <br>
+          <% end %>
         </div>
       <% end %>
     </div>

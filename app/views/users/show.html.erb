@@ -3,7 +3,7 @@
     	<center><h1>Posts</h1></center>
     </div>
     <div class="card-body">
-		<div class="post_area"  style="min-width: 520px;">
+		<div class="post_area">
 			<% @posts.each do |post|%>
 				<p><small><b><%= link_to post.user.name, user_path(post.user) %></b></small> . <small class="text-muted"><%= post.created_at %></small></p>
 				<b><%= post.body %></b>

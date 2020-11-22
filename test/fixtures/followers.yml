@@ -2,8 +2,10 @@
 
 one:
   user: one
-  body: MyText
+  follows_user: 1
+  notified: false
 
 two:
   user: two
-  body: MyText
+  follows_user: 1
+  notified: false

@@ -13,21 +13,14 @@
   </head>
 
   <body>
-    <div class="center_content">
       <% if user_signed_in? %>
-        <div class="f_left">
           <ul class="list-group" style="min-width: 320px;">
             <li class="list-group-item list-group-item-secondary"><%= link_to "Página Inicial", user_posts_path(current_user) %></li>
             <li class="list-group-item"><%= link_to "Perfil", user_path(current_user) %></li>
             <li class="list-group-item"><%= link_to "Sair de "+current_user.name, destroy_user_session_path, :method => "delete"%></li>
           </ul>
-        </div>
       <% end %>
-    </div>
-    <div class="f_left">
       <%= yield %>
-    </div>
-    <div class="clear"></div>
     </div>
     <br>
   </body>

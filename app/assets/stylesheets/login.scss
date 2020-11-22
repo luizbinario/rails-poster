@@ -18,21 +18,19 @@
 @import "bootstrap";
 */
 
-div.center_login{
+div.login{
     position: relative;
-    border: solid 0px;
-    width: 100%;
-    left: 190%;
-    margin: 40% 0 0 0;
+    border: none;
+    width: 300px;
+    margin: 5% auto;
     padding: 10px 10px 10px 10px;
 }
 
-div.center_inscricao{
+div.inscricao{
     position: relative;
-    border: solid 0px;
-    width: 100%;
-    left: 220%;
-    margin: 40% 0 0 0;
+    border: none;
+    width: 400px;
+    margin: 5% auto;
     padding: 10px 10px 10px 10px;
 }
 
