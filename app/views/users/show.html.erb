@@ -1,0 +1,14 @@
+<div class="card">
+	<div class="card-header">
+    	<center><h1>Posts</h1></center>
+    </div>
+    <div class="card-body">
+		<div class="post_area"  style="min-width: 520px;">
+			<% @posts.each do |post|%>
+				<p><small><b><%= link_to post.user.name, user_path(post.user) %></b></small> . <small class="text-muted"><%= post.created_at %></small></p>
+				<b><%= post.body %></b>
+				<hr>
+			<% end %>
+		</div>
+	</div>
+</div>

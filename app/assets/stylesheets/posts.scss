@@ -1,0 +1,27 @@
+// Place all the styles related to the Posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+@import "application";
+
+div.center_content {
+    border: solid 0px #D3D3D3;
+    border-radius: 5px;
+    width: 46%;
+    margin:  5px auto 10px auto;
+}
+
+div.center_post {
+    border-radius: 5px;
+    width: 98%;
+    margin: auto;
+}
+
+.margin-5{
+	margin: 0 5px 5px 5px;
+}
+
+.right {
+	position: relative;
+	float: right
+}
