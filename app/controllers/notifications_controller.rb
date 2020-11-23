@@ -4,11 +4,11 @@ class NotificationsController < ApplicationController
 		require 'date'
 
 		@user = User.find(params[:user_id])
-		@count = Follower.where(follows_user: current_user.id, notified: false).count
+		@follows_count = Follower.where(follows_user: current_user.id, notified: false).count
 		@notifications = Follower.where(follows_user: current_user.id).order(created_at: :desc)
 		
 		#Atualizando status do follow como notificado
-		if @count > 0
+		if @follows_count > 0
 			follow = Follower.where(follows_user: current_user.id, notified: false).update_all(notified: true)
 			# follow.notified = true
 			# follow.save

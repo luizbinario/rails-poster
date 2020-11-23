@@ -1,11 +1,20 @@
+<form action="/search">
+	<div class="input-group mb-3">
+		<input type="text" name="search" placeholder="Digite o nome do poster" class="form-control">
+		<div class="input-group-append">
+			<input type="submit" value="Encontrar Poster" class="btn btn-primary">
+		</div>
+	</div>
+</form>
 <div class="card">
 	<div class="card-header">
     	<center><h1>Posts</h1></center>
     </div>
     <div class="card-body">
 		<div class="center_post">
-		    <%= form_with scope: :post, url: user_posts_path, loca: true do |form| %>
-		    <%= form.text_area :body, placeholder: "O que está acontecendo?", :class => "form-control border-0" %><br>
+		    <%= form_with scope: :post, url: user_posts_path, local: true do |form| %>
+		    
+		    	<%= form.text_area :body, placeholder: "O que está acontecendo?", :class => "form-control border-0" %><br>
 			<%= form.submit "Salvar Post", :class => "btn btn-primary right margin-5" %>
 			<div class="clear"></div>
 		    <% end %>
@@ -13,7 +22,7 @@
 		<div class="post_area">
 			<% @posts.each do |post|%>
 				<hr>
-				<p><small><b><%= link_to post.user.name, user_path(post.user) %></b></small> . <small class="text-muted"><%= post.created_at %></small></p>
+				<p><small><b><%= link_to post.user.name, user_path(post.user) %></b></small> - <small class="text-muted">postou em <%= post.created_at.strftime('%d/%m/%Y') %></small></p>
 				<b><%= post.body %></b>
 			<% end %>
 		</div>

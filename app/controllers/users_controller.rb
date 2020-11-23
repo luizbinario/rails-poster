@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
 	def index
-		@user = User.find(params[:id])
+		if params[:search]
+			@users_search = "1237"
+		else
+			@user = User.find(params[:id])
+		end
 	end
 
 	def new
@@ -8,7 +12,12 @@ class UsersController < ApplicationController
 	end
 
 	def show
-		@user = User.find(params[:id])
+		if not params[:search]
+			@user = User.find(params[:id])
+		else
+			@user = User.find(current_user.id)
+		end
+
 		@posts = Post.where(user_id: @user).order("created_at desc")
 
 		if Follower.where(user_id: current_user.id, follows_user: @user.id).count > 0
@@ -16,7 +25,7 @@ class UsersController < ApplicationController
 		end
 
 		@follows = Follower.where(follows_user: @user.id, notified: false).count
-		
+
 		render :layout => "profile"
 	end
 
@@ -25,5 +34,13 @@ class UsersController < ApplicationController
 	end
 
 	def create
+	end
+
+	def search
+		@follows = Follower.where(follows_user: current_user.id, notified: false).count
+
+		@user = User.find(current_user.id)
+		@users_search = User.where("name LIKE ?", "%"+params[:search]+"%")
+		render :layout => "profile"
 	end
 end

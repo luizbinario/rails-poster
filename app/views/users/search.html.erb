@@ -1,0 +1,23 @@
+<form action="/search">
+	<div class="input-group mb-3">
+		<input type="text" name="search" placeholder="Digite o nome do poster" class="form-control">
+		<div class="input-group-append">
+			<input type="submit" value="Encontrar Poster" class="btn btn-primary">
+		</div>
+	</div>
+</form>
+<div class="card">
+	<div class="card-header">
+    	<center><h1>Posters</h1></center>
+    </div>
+    <div class="card-body">
+		<div class="post_area">
+			<% if params[:search].length > 0 %>
+				<% @users_search.each do |user|%>
+				<small><b><%= link_to user.name, user_path(user) %></b></small> - <small class="text-muted">Entrou no poster em <%= user.created_at.strftime('%d/%m/%Y') %>.</small>
+				<% end %>
+				<hr>
+			<% end %>
+		</div>
+	</div>
+</div>

@@ -4,14 +4,14 @@
     </div>
     <div class="card-body">
 		<div class="post_area">
-			<% if @count > 0 %>
+			<% if @follows_count > 0 %>
 				<% @notifications.each do |notification| %>
 				<b><%= notification.user.name %> </b>começou a seguir você.<br><small class="text-muted"><%= notification.created_at.strftime('%d/%m/%Y') %></small>
 				<hr>
 				<%= @agora %>
 				<% end %>
 			<% else %>
-				<b>Nenhuma notificação.</b>
+				<b>Nenhuma nova notificação.</b>
 				<hr>
 			<% end %>
 		</div>
