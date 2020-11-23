@@ -1,9 +1,13 @@
 class UsersController < ApplicationController
 	def index
-		if params[:search]
-			@users_search = "1237"
-		else
+		if params[:id]
 			@user = User.find(params[:id])
+		else
+			if current_user
+				@user = current_user.id
+			else
+				redirect_to "/"
+			end
 		end
 	end
 
@@ -12,18 +16,25 @@ class UsersController < ApplicationController
 	end
 
 	def show
-		if not params[:search]
-			@user = User.find(params[:id])
+		if params[:id]
+			@user = User.find_by_id(params[:id])
+			redirect_to("/") unless @user
 		else
-			@user = User.find(current_user.id)
+			if current_user
+				@user = current_user.id
+			else
+				redirect_to "/"
+			end
 		end
 
 		@posts = Post.where(user_id: @user).order("created_at desc")
 
-		if Follower.where(user_id: current_user.id, follows_user: @user.id).count > 0
-			@follow = true
+		if current_user
+			if Follower.where(user_id: current_user.id, follows_user: @user.id).count > 0
+				@follow = true
+			end
 		end
-
+		
 		@follows = Follower.where(follows_user: @user.id, notified: false).count
 
 		render :layout => "profile"

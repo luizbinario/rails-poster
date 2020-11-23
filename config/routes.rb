@@ -14,4 +14,5 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
   #root 'posts#new'
+  match '*path' => redirect('/'), via: :get
 end

@@ -50,7 +50,15 @@
           <br>
           <% end %>
         </div>
-      <% end %>
+      <% else %>
+        <div class="f_left">
+          <ul class="list-group" style="min-width: 320px;">
+            <li class="list-group-item"><b>Nome:</b> <%= @user.name %></li>
+            <li class="list-group-item"><b>Email:</b> <%= @user.email %></li>
+            <li class="list-group-item"><b>Cadastro realizado em:</b> <%= @user.created_at.strftime('%d/%m/%Y') %></li>
+          </ul>
+        </div>
+      <% end%>
     </div>
     <div class="f_left">
       <%= yield %>
