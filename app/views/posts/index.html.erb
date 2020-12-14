@@ -21,9 +21,11 @@
 		</div>
 		<div class="post_area">
 			<% @posts.each do |post|%>
-				<hr>
-				<p><small><b><%= link_to post.user.name, user_path(post.user) %></b></small> - <small class="text-muted">postou em <%= post.created_at.strftime('%d/%m/%Y') %></small></p>
-				<b><%= post.body %></b>
+				<% if post.verified %>
+					<hr>
+					<p><small><b><%= link_to post.user.name, user_path(post.user) %></b></small> - <small class="text-muted">postou em <%= post.created_at.strftime('%d/%m/%Y') %></small></p>
+					<b><%= post.body %></b>
+				<% end %>
 			<% end %>
 		</div>
 	</div>

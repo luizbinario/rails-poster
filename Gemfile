@@ -32,6 +32,12 @@ gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
 #gem Devise
 gem 'devise'
 
+#gem CanCanCan
+gem 'cancancan'
+
+#gem Admin
+gem 'rails_admin', '~> 2.0'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 

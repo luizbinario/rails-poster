@@ -3,7 +3,9 @@
 one:
   user: one
   body: MyText
+  verified: false
 
 two:
   user: two
   body: MyText
+  verified: false

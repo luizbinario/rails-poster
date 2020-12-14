@@ -10,8 +10,6 @@ class NotificationsController < ApplicationController
 		#Atualizando status do follow como notificado
 		if @follows_count > 0
 			follow = Follower.where(follows_user: current_user.id, notified: false).update_all(notified: true)
-			# follow.notified = true
-			# follow.save
 		end
 
 		render :layout => "profile"

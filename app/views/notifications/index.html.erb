@@ -6,9 +6,8 @@
 		<div class="post_area">
 			<% if @follows_count > 0 %>
 				<% @notifications.each do |notification| %>
-				<b><%= notification.user.name %> </b>começou a seguir você.<br><small class="text-muted"><%= notification.created_at.strftime('%d/%m/%Y') %></small>
-				<hr>
-				<%= @agora %>
+					<b><%= notification.user.name %> </b>começou a seguir você.<br><small class="text-muted"><%= notification.created_at.strftime('%d/%m/%Y') %></small>
+					<hr>
 				<% end %>
 			<% else %>
 				<b>Nenhuma nova notificação.</b>
